@@ -1,0 +1,304 @@
+{
+    "operatorName": "MetroBus",
+    "busType": "Standard",
+    "departureTime": "11",
+    "rating": [
+        {
+            "$numberDouble": "3.9"
+        },
+        {
+            "$numberDouble": "3.8"
+        },
+        {
+            "$numberDouble": "4.0"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "40"
+    },
+    "routes": "66385c2c5a63e8cbd6abb0aa",
+    "images": "https://example.com/bus-image5.jpg",
+    "liveTracking": {
+        "$numberInt": "0"
+    },
+    "reschedulable": {
+        "$numberInt": "1"
+    }
+}
+
+{
+    "operatorName": "TravelXpress",
+    "busType": "Sleeper",
+    "departureTime": "08",
+    "rating": [
+        {
+            "$numberInt": "4"
+        },
+        {
+            "$numberDouble": "4.5"
+        },
+        {
+            "$numberDouble": "3.5"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "40"
+    },
+    "routes": "66385c2c5a63e8cbd6abb0aa",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "0"
+    }
+}
+
+{
+    "operatorName": "FastTransit",
+    "busType": "A/C Seater",
+    "departureTime": "10",
+    "rating": [
+        {
+            "$numberDouble": "4.5"
+        },
+        {
+            "$numberDouble": "4.0"
+        },
+        {
+            "$numberDouble": "4.2"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "30"
+    },
+    "routes": "66385c3a5a63e8cbd6abba12",
+    "images": "https://example.com/bus-image2.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "1"
+    }
+}
+
+{
+    "operatorName": "CityLink",
+    "busType": "Sleeper",
+    "departureTime": "12",
+    "rating": [
+        {
+            "$numberDouble": "4.2"
+        },
+        {
+            "$numberDouble": "4.3"
+        },
+        {
+            "$numberDouble": "4.1"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "40"
+    },
+    "routes": "66385c3a5a63e8cbd6abba12",
+    "images": "https://example.com/bus-image3.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "0"
+    }
+}
+{
+    "operatorName": "SwiftTrans",
+    "busType": "A/C Seater",
+    "departureTime": "09",
+    "rating": [
+        {
+            "$numberDouble": "4.8"
+        },
+        {
+            "$numberDouble": "4.9"
+        },
+        {
+            "$numberDouble": "4.7"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "20"
+    },
+    "routes": "66385c4c5a63e8cbd6abc47c",
+    "images": "https://example.com/bus-image4.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "1"
+    }
+}
+
+{
+    "operatorName": "ExpressLine",
+    "busType": "AC Seater",
+    "departureTime": "02",
+    "rating": [
+        {
+            "$numberDouble": "4.4"
+        },
+        {
+            "$numberDouble": "4.2"
+        },
+        {
+            "$numberDouble": "4.5"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "35"
+    },
+    "routes": "66385c4c5a63e8cbd6abc47c",
+    "images": "https://example.com/bus-image6.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "0"
+    }
+}
+
+{
+    "operatorName": "TransitHub",
+    "busType": "standard",
+    "departureTime": "03",
+    "rating": [
+        {
+            "$numberDouble": "4.6"
+        },
+        {
+            "$numberDouble": "4.7"
+        },
+        {
+            "$numberDouble": "4.8"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "25"
+    },
+    "routes": "66385c5a5a63e8cbd6abcbe8",
+    "images": "https://example.com/bus-image7.jpg",
+    "liveTracking": {
+        "$numberInt": "0"
+    },
+    "reschedulable": {
+        "$numberInt": "1"
+    }
+}
+
+{
+    "operatorName": "EliteTravels",
+    "busType": "Sleeper",
+    "departureTime": "06",
+    "rating": [
+        {
+            "$numberDouble": "4.3"
+        },
+        {
+            "$numberDouble": "4.4"
+        },
+        {
+            "$numberDouble": "4.2"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "40"
+    },
+    "routes": "66385c5a5a63e8cbd6abcbe8",
+    "images": "https://example.com/bus-image8.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "0"
+    }
+}
+{
+    "operatorName": "TravelMax",
+    "busType": "AC Sleeper",
+    "departureTime": "08",
+    "rating": [
+        {
+            "$numberDouble": "4.5"
+        },
+        {
+            "$numberDouble": "4.6"
+        },
+        {
+            "$numberDouble": "4.7"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "30"
+    },
+    "routes": "66385c895a63e8cbd6abe697",
+    "images": "https://example.com/bus-image9.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "1"
+    }
+}
+
+{
+    "operatorName": "SunriseTransit",
+    "busType": "standard",
+    "departureTime": "05",
+    "rating": [
+        {
+            "$numberDouble": "4.7"
+        },
+        {
+            "$numberDouble": "4.8"
+        },
+        {
+            "$numberDouble": "4.6"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "20"
+    },
+    "routes": "66385c895a63e8cbd6abe697",
+    "images": "https://example.com/bus-image10.jpg",
+    "liveTracking": {
+        "$numberInt": "0"
+    },
+    "reschedulable": {
+        "$numberInt": "0"
+    }
+}
+{
+    
+    "operatorName": "RapidTransport",
+    "busType": "Sleeper",
+    "departureTime": "01",
+    "rating": [
+        {
+            "$numberDouble": "4.1"
+        },
+        {
+            "$numberDouble": "4.0"
+        },
+        {
+            "$numberDouble": "4.3"
+        }
+    ],
+    "totalSeats": {
+        "$numberInt": "40"
+    },
+    "routes": "66385c895a63e8cbd6abe697",
+    "images": "https://example.com/bus-image11.jpg",
+    "liveTracking": {
+        "$numberInt": "1"
+    },
+    "reschedulable": {
+        "$numberInt": "1"
+    }
+}

@@ -1,0 +1,50 @@
+<!-- bottom-tab.component.html -->
+<div class="bg-gray-50/80 border-t border-gray-100 px-6">
+    <div class="flex items-center gap-8 border-b border-gray-100 flex-wrap">
+        <button (click)="handletabstate(0)" 
+            class="py-4 text-xs font-black uppercase tracking-widest transition-all duration-300 relative group"
+            [class.text-red-600]="tabstate[0]" [class.text-gray-400]="!tabstate[0]">
+            Amenities
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 rounded-t-full transform transition-transform" [class.scale-x-100]="tabstate[0]" [class.scale-x-0]="!tabstate[0]"></div>
+        </button>
+
+        <button (click)="handletabstate(1)" 
+            class="py-4 text-xs font-black uppercase tracking-widest transition-all duration-300 relative group"
+            [class.text-red-600]="tabstate[1]" [class.text-gray-400]="!tabstate[1]">
+            Boarding & Dropping
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 rounded-t-full transform transition-transform" [class.scale-x-100]="tabstate[1]" [class.scale-x-0]="!tabstate[1]"></div>
+        </button>
+
+        <button (click)="handletabstate(2)" 
+            class="py-4 text-xs font-black uppercase tracking-widest transition-all duration-300 relative group"
+            [class.text-red-600]="tabstate[2]" [class.text-gray-400]="!tabstate[2]">
+            Reviews
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 rounded-t-full transform transition-transform" [class.scale-x-100]="tabstate[2]" [class.scale-x-0]="!tabstate[2]"></div>
+        </button>
+
+        <button (click)="handletabstate(3)" 
+            class="py-4 text-xs font-black uppercase tracking-widest transition-all duration-300 relative group"
+            [class.text-red-600]="tabstate[3]" [class.text-gray-400]="!tabstate[3]">
+            Policies
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 rounded-t-full transform transition-transform" [class.scale-x-100]="tabstate[3]" [class.scale-x-0]="!tabstate[3]"></div>
+        </button>
+
+        <button (click)="handletabstate(4)" 
+            class="py-4 text-xs font-black uppercase tracking-widest transition-all duration-300 relative group"
+            [class.text-red-600]="tabstate[4]" [class.text-gray-400]="!tabstate[4]">
+            View Seats
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 rounded-t-full transform transition-transform" [class.scale-x-100]="tabstate[4]" [class.scale-x-0]="!tabstate[4]"></div>
+        </button>
+    </div>
+
+    <div class="py-10 animate-fadeIn">
+        <div *ngIf="tabstate[0]" class="text-sm text-gray-600 font-medium">✨ Premium Amenities: AC, Charging Point, Movie, Reading Light</div>
+        <div *ngIf="tabstate[1]" class="text-sm text-gray-600 font-medium">📍 Boarding & Dropping Points listed here</div>
+        <div *ngIf="tabstate[2]" class="text-sm text-gray-600 font-medium">💬 User Reviews and Ratings</div>
+        <div *ngIf="tabstate[3]" class="text-sm text-gray-600 font-medium">📜 Booking and Cancellation Policies</div>
+        <div *ngIf="tabstate[4]">
+            <app-view-seats [filledseats]="filledseats" [seatprice]="seatprice" [routedetails]="routedetials" [busid]="busid"
+                [busarrivaltime]="busarrivaltime" [busdeparturetime]="busdeparturetime" [operatorname]="operatorname" ></app-view-seats>
+        </div>
+    </div>
+</div>

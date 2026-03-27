@@ -1,0 +1,111 @@
+{
+    "departureLocation": {
+        "name": "Delhi",
+        "subLocations": [
+            "Connaught Place",
+            "Chandni Chowk",
+            "Lajpat Nagar"
+        ]
+    },
+    "arrivalLocation": {
+        "name": "Jaipur",
+        "subLocations": [
+            "Hawa Mahal",
+            "Amer Fort",
+            "Jantar Mantar"
+        ]
+    },
+    "duration": {
+        "$numberInt": "5"
+    }
+}
+
+
+{
+    "departureLocation": {
+        "name": "Mumbai",
+        "subLocations": [
+            "Gateway of India",
+            "Marine Drive",
+            "Bandra"
+        ]
+    },
+    "arrivalLocation": {
+        "name": "Goa",
+        "subLocations": [
+            "Calangute Beach",
+            "Baga Beach",
+            "Old Goa"
+        ]
+    },
+    "duration": {
+        "$numberInt": "10"
+    }
+}
+
+{
+    "departureLocation": {
+        "name": "Kolkata",
+        "subLocations": [
+            "Victoria Memorial",
+            "Howrah Bridge",
+            "Park Street"
+        ]
+    },
+    "arrivalLocation": {
+        "name": "Darjeeling",
+        "subLocations": [
+            "Tiger Hill",
+            "Darjeeling Himalayan Railway",
+            "Batasia Loop"
+        ]
+    },
+    "duration": {
+        "$numberInt": "8"
+    }
+}
+
+{
+    "departureLocation": {
+        "name": "Bangalore",
+        "subLocations": [
+            "MG Road",
+            "Indiranagar",
+            "Koramangala"
+        ]
+    },
+    "arrivalLocation": {
+        "name": "Mysore",
+        "subLocations": [
+            "Mysore Palace",
+            "Chamundi Hill",
+            "Brindavan Gardens"
+        ]
+    },
+    "duration": {
+        "$numberInt": "3"
+    }
+}
+
+{
+   
+    "departureLocation": {
+        "name": "Chennai",
+        "subLocations": [
+            "Marina Beach",
+            "Kapaleeshwarar Temple",
+            "Elliots Beach"
+        ]
+    },
+    "arrivalLocation": {
+        "name": "Pondicherry",
+        "subLocations": [
+            "Auroville",
+            "Paradise Beach",
+            "French Colony"
+        ]
+    },
+    "duration": {
+        "$numberInt": "6"
+    }
+}

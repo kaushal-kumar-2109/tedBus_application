@@ -1,0 +1,51 @@
+{
+  "NAVBAR": {
+    "BUS_TICKETS": "बस टिकट",
+    "CAB_RENTAL": "कैब रेंटल",
+    "TRAIN_TICKETS": "ट्रेन टिकट",
+    "HELP": "सहायता",
+    "LOGIN": "लॉग इन",
+    "SIGNUP": "साइन अप",
+    "ACCOUNT": "खाता",
+    "MY_TRIPS": "मेरी यात्राएं",
+    "WALLET": "बटुआ",
+    "PROFILE": "प्रोफ़ाइल",
+    "SIGN_OUT": "लॉग आउट",
+    "MENU": "मेनू",
+    "JOIN": "टेडबस से जुड़ें",
+    "SIGNED_IN_AS": "के रूप में साइन इन हैं",
+    "SERVICES": "सेवाएं",
+    "SUPPORT_SETTINGS": "समर्थन और सेटिंग्स",
+    "HELP_SUPPORT": "सहायता एवं समर्थन",
+    "SWITCH_DARK": "डार्क मोड में स्विच करें",
+    "SWITCH_LIGHT": "लाइट मोड में स्विच करें"
+  },
+  "LANDING": {
+    "HERO_TITLE": "भारत की नंबर 1 ऑनलाइन",
+    "HERO_SUBTITLE": "बस टिकट बुकिंग साइट",
+    "FROM": "कहाँ से",
+    "START_CITY": "प्रस्थान शहर",
+    "TO": "कहाँ तक",
+    "DESTINATION": "गंतव्य",
+    "DATE": "तारीख",
+    "SELECT_DATE": "तारीख चुनें",
+    "SEARCH_BUSES": "बसें खोजें",
+    "TRENDING_OFFERS": "ट्रेंडिंग ऑफर",
+    "HANDPICKED_DEALS": "आपके लिए चुने गए सौदे",
+    "VIEW_ALL": "सभी देखें"
+  },
+  "PROFILE": {
+    "LANGUAGE": "भाषा",
+    "MY_PROFILE": "मेरी प्रोफ़ाइल",
+    "YOUR_NAME": "आपका नाम",
+    "DOB": "जन्म की तारीख",
+    "GENDER": "लिंग",
+    "CONTACT_DETAILS": "संपर्क विवरण",
+    "EMAIL": "ईमेल",
+    "PHONE": "फ़ोन",
+    "DASHBOARD": "डैशबोर्ड",
+    "MY_TRIPS": "मेरी यात्राएं",
+    "WALLET": "बटुआ",
+    "SIGN_OUT": "लॉग आउट"
+  }
+}

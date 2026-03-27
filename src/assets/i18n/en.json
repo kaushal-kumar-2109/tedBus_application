@@ -1,0 +1,51 @@
+{
+  "NAVBAR": {
+    "BUS_TICKETS": "Bus Tickets",
+    "CAB_RENTAL": "Cab Rental",
+    "TRAIN_TICKETS": "Train Tickets",
+    "HELP": "Help",
+    "LOGIN": "Login",
+    "SIGNUP": "Sign Up",
+    "ACCOUNT": "Account",
+    "MY_TRIPS": "My Trips",
+    "WALLET": "Wallet",
+    "PROFILE": "Profile",
+    "SIGN_OUT": "Sign Out",
+    "MENU": "Menu",
+    "JOIN": "Join Tedbus",
+    "SIGNED_IN_AS": "Signed in as",
+    "SERVICES": "Services",
+    "SUPPORT_SETTINGS": "Support & Settings",
+    "HELP_SUPPORT": "Help & Support",
+    "SWITCH_DARK": "Switch to Dark Mode",
+    "SWITCH_LIGHT": "Switch to Light Mode"
+  },
+  "LANDING": {
+    "HERO_TITLE": "India's No. 1 Online",
+    "HERO_SUBTITLE": "Bus Ticket Booking Site",
+    "FROM": "From",
+    "START_CITY": "Start City",
+    "TO": "To",
+    "DESTINATION": "Destination",
+    "DATE": "Date",
+    "SELECT_DATE": "Select Date",
+    "SEARCH_BUSES": "SEARCH BUSES",
+    "TRENDING_OFFERS": "TRENDING OFFERS",
+    "HANDPICKED_DEALS": "Handpicked deals just for you",
+    "VIEW_ALL": "View All"
+  },
+  "PROFILE": {
+    "LANGUAGE": "Language",
+    "MY_PROFILE": "My Profile",
+    "YOUR_NAME": "Your name",
+    "DOB": "Date of Birth",
+    "GENDER": "Gender",
+    "CONTACT_DETAILS": "Contact Details",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "DASHBOARD": "Dashboard",
+    "MY_TRIPS": "My Trips",
+    "WALLET": "Wallet",
+    "SIGN_OUT": "Sign Out"
+  }
+}

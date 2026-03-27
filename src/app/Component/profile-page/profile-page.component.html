@@ -1,0 +1,98 @@
+<div class="ProfilePannel">
+    <div class="leftPart">
+      <ul class="leftPannel">
+        <li class="leftPannel_eachListItem">
+          <mat-icon style="color: grey; font-size: 30px; height: 100% ;width:100%;">perm_identity</mat-icon>
+  
+          <div class="leftPannel_eachListItem_text">
+            {{ 'PROFILE.DASHBOARD' | translate }}
+          </div>
+  
+        </li>
+        <div class="line"></div>
+        <!-- Other list items -->
+        <li class="leftPannel_eachListOption" (click)="handlelistitemclick('trips')">
+          <i class="material-icons" style="color: grey; font-size: 30px;">location_on</i>
+  
+          <div class="leftPannel_eachListItem_text">{{ 'PROFILE.MY_TRIPS' | translate }}</div>
+        </li>
+        <div class="line"></div>
+        <!-- Add other list items here -->
+        <li class="leftPannel_eachListOption" (click)="handlelistitemclick('profile')">
+          <i class="material-icons" style="color: grey; font-size: 30px;">settings</i>
+          <div class="leftPannel_eachListItem_text">{{ 'PROFILE.MY_PROFILE' | translate }}</div>
+        </li>
+        <div class="line"></div>
+        <li class="leftPannel_eachListOption" (click)="handlelistitemclick('wallet')">
+          <i class="material-icons" style="color: grey; font-size: 30px;">account_balance_wallet</i>
+          <div class="leftPannel_eachListItem_text">{{ 'PROFILE.WALLET' | translate }}</div>
+        </li>
+        <div class="line"></div>
+        <li class="leftPannel_eachListOption" (click)="handlelogout()">
+          <i class="material-icons" style="color: #d32f2f; font-size: 30px;">exit_to_app</i>
+          <div class="leftPannel_eachListItem_text" style="color: #d32f2f; font-weight: bold;">{{ 'PROFILE.SIGN_OUT' | translate }}</div>
+        </li>
+        <div class="line"></div>
+      </ul>
+    </div>
+    <div class="seprator"></div>
+  
+    <div *ngIf="selecteditem === 'trips'">
+      <!-- MyTrips component or content -->
+      <app-my-trip [booking]="mytrip"></app-my-trip> 
+    </div>
+    <div *ngIf="selecteditem === 'wallet'">
+      Wallet feature coming soon...
+    </div>
+    <div *ngIf="selecteditem === 'profile'" class="rightPannel">
+      <span class="profileHeading">{{ 'PROFILE.MY_PROFILE' | translate }}</span>
+      <div class="profilebox">
+        <div style="display: flex; justify-content: space-between">
+          <div
+            style="display: flex; flex-direction: column; margin-left: 20px; height: 50px; justify-content: space-evenly">
+            <div class="userDetailHeading">{{ 'PROFILE.YOUR_NAME' | translate }}</div>
+            <div class="userDetailInfo">{{ currentcustomer ? currentname : 'User' }}</div>
+          </div>
+          <div
+            style="display: flex; flex-direction: column; margin-left: 20px; height: 50px; justify-content: space-evenly">
+            <div class="userDetailHeading">{{ 'PROFILE.DOB' | translate }}</div>
+            <div class="userDetailInfo">1993-03-04</div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5%">
+          <div
+            style="display: flex; flex-direction: column; margin-left: 20px; height: 50px; justify-content: space-evenly">
+            <div class="userDetailHeading">{{ 'PROFILE.GENDER' | translate }}</div>
+            <div class="userDetailInfo">{{ currentcustomer ? currentcustomer.gender : '-' }}</div>
+          </div>
+          <!-- Language Selection -->
+          <div
+            style="display: flex; flex-direction: column; margin-right: 20px; height: 50px; justify-content: space-evenly; width: 150px;">
+            <div class="userDetailHeading">{{ 'PROFILE.LANGUAGE' | translate }}</div>
+            <select class="search-input" style="padding: 5px; border-radius: 5px;" [ngModel]="currentLang" (ngModelChange)="switchLang($event)">
+              <option value="en">English (EN)</option>
+              <option value="hi">हिंदी (HI)</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5%">
+          <div class="contactLine"></div>
+          <div class="contactDetailsHeading">{{ 'PROFILE.CONTACT_DETAILS' | translate }}</div>
+          <div class="contactLine"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 5%">
+          <div
+            style="display: flex; flex-direction: column; margin-left: 20px; height: 50px; justify-content: space-evenly">
+            <div class="userDetailHeading">{{ 'PROFILE.EMAIL' | translate }}</div>
+            <div class="userDetailInfo">{{ currentcustomer ? currentemail : '-' }}</div>
+          </div>
+          <div
+            style="display: flex; flex-direction: column; margin-left: 20px; height: 50px; justify-content: space-evenly">
+            <div class="userDetailHeading">{{ 'PROFILE.PHONE' | translate }}</div>
+            <div class="userDetailInfo">12345678</div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

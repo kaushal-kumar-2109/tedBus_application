@@ -1,0 +1,92 @@
+<div class="min-h-screen bg-gray-50 dark:bg-[#121212] py-8 transition-colors">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <button routerLink="/community" class="mb-6 flex flex-row items-center gap-2 text-sm font-bold text-gray-500 hover:text-red-600 transition-colors">
+      <i class="fa-solid fa-arrow-left"></i> Back to Community
+    </button>
+
+    <div *ngIf="!post" class="text-center py-20">
+      <i class="fa-solid fa-spinner fa-spin text-3xl text-gray-400"></i>
+    </div>
+
+    <div *ngIf="post" class="bg-white dark:bg-[#1f1f1f] rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-stone-800">
+      
+      <!-- Hero Image -->
+      <img *ngIf="post.imageUrl" [src]="post.imageUrl" class="w-full h-64 md:h-96 object-cover">
+      
+      <div class="p-8">
+        <!-- Header -->
+        <h1 class="text-3xl md:text-5xl font-black text-gray-800 dark:text-white leading-tight tracking-tight mb-6">{{ post.title }}</h1>
+        
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/40 flex items-center justify-center font-black text-red-600 dark:text-red-500 text-xl">
+            {{ post.authorName.charAt(0).toUpperCase() }}
+          </div>
+          <div>
+            <h4 class="font-bold text-gray-800 dark:text-gray-200 text-lg">{{ post.authorName }}</h4>
+            <span class="text-sm text-gray-500 font-medium tracking-wide">{{ post.createdAt | date:'medium' }}</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line mb-8">
+          {{ post.content }}
+        </p>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mb-8" *ngIf="post.tags && post.tags.length > 0">
+          <span *ngFor="let tag of post.tags" class="text-xs font-bold px-4 py-2 bg-gray-100 dark:bg-stone-800 text-gray-600 dark:text-gray-300 rounded-full lowercase tracking-wider">
+            #{{ tag }}
+          </span>
+        </div>
+
+        <hr class="border-gray-100 dark:border-stone-800 my-8">
+
+        <!-- Comments Section -->
+        <div>
+          <h3 class="text-2xl font-black text-gray-800 dark:text-white mb-6">Discussion ({{ post.comments?.length || 0 }})</h3>
+          
+          <!-- Add Comment -->
+          <div class="flex flex-col gap-3 mb-8" *ngIf="currentUser">
+            <textarea 
+              [(ngModel)]="newCommentText" 
+              rows="3"
+              placeholder="Join the discussion..." 
+              class="w-full bg-gray-50 dark:bg-[#121212] border-2 border-transparent focus:border-red-500 dark:border-stone-800 rounded-2xl px-5 py-4 text-gray-700 dark:text-gray-300 focus:outline-none transition-all resize-none font-medium"
+            ></textarea>
+            <div class="flex justify-end">
+              <button 
+                (click)="submitComment()"
+                [disabled]="!newCommentText.trim() || isSubmitting"
+                class="bg-red-600 hover:bg-red-700 disabled:bg-red-300 text-white font-bold py-2 px-6 rounded-full shadow-lg shadow-red-200 dark:shadow-red-900/20 transition-all">
+                {{ isSubmitting ? 'Posting...' : 'Post Comment' }}
+              </button>
+            </div>
+          </div>
+          <div *ngIf="!currentUser" class="bg-gray-50 dark:bg-stone-800/50 p-6 rounded-2xl text-center mb-8 border border-gray-100 dark:border-stone-800">
+            <p class="font-bold text-gray-500 dark:text-gray-400 mb-3">Please log in to join the conversation.</p>
+            <button routerLink="/login" class="bg-white dark:bg-[#1f1f1f] text-red-600 font-bold py-2 px-6 rounded-full border-2 border-red-100 dark:border-red-900/30 hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors">Log In</button>
+          </div>
+
+          <!-- Comment List -->
+          <div class="flex flex-col gap-6">
+            <div *ngFor="let comment of post.comments" class="flex gap-4">
+              <div class="w-10 h-10 rounded-full bg-gray-200 dark:bg-stone-700 flex-shrink-0 flex items-center justify-center font-bold text-gray-600 dark:text-gray-400">
+                {{ comment.authorName.charAt(0).toUpperCase() }}
+              </div>
+              <div class="flex-1 bg-gray-50 dark:bg-[#121212] p-4 rounded-b-2xl rounded-tr-2xl border border-gray-100 dark:border-stone-800">
+                <div class="flex items-center justify-between mb-1">
+                  <h5 class="font-bold text-gray-800 dark:text-gray-200">{{ comment.authorName }}</h5>
+                  <span class="text-xs text-gray-400 font-medium">{{ comment.createdAt | date:'short' }}</span>
+                </div>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{{ comment.text }}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

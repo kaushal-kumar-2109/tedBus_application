@@ -1,0 +1,4 @@
+/* header.component.css is no longer needed with Tailwind, but I'll clear it just in case */
+:host {
+    display: block;
+}

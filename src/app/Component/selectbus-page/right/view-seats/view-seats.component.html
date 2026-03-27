@@ -1,0 +1,90 @@
+<div class="mainContainer">
+    <div class="mainContainer1">
+        <div class="mainContainer1Left">
+            <i class="material-icons">donut_large</i>
+        </div>
+        <div class="mainContainer1Right">
+            <div>
+                <ng-container *ngFor="let index of generatearray(10)">
+                    <app-small-seats [seatno]="index" [alreadybookedseats]="filledseats"
+                        (seatselected)="handleselectedseats($event)" [selectedseats]="selectedseats"></app-small-seats>
+                </ng-container>
+            </div>
+            <div>
+                <ng-container *ngFor="let index of generatearray(10)">
+                    <app-small-seats [seatno]="10 +index" [alreadybookedseats]="filledseats"
+                        (seatselected)="handleselectedseats($event)" [selectedseats]="selectedseats"></app-small-seats>
+                </ng-container>
+            </div>
+            <div></div>
+            <div>
+                <ng-container *ngFor="let index of generatearray(10)">
+                    <app-small-seats [seatno]="20+index" [alreadybookedseats]="filledseats"
+                        (seatselected)="handleselectedseats($event)" [selectedseats]="selectedseats"></app-small-seats>
+                </ng-container>
+            </div>
+            <div>
+                <ng-container *ngFor="let index of generatearray(10)">
+                    <app-small-seats [seatno]="30+index" [alreadybookedseats]="filledseats"
+                        (seatselected)="handleselectedseats($event)" [selectedseats]="selectedseats"></app-small-seats>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <div class="mainContainer2">
+        <div class="mainContainer21">
+            <div>Boarding and Dropping</div>
+            <div>Change</div>
+        </div>
+        <div class="mainContainer22">
+            <div>
+                <div>
+                    <span style="font-size: 16px; color: #3e3e52;">
+                        <mat-icon>flight_takeoff</mat-icon>&nbsp;&nbsp;{{routedetails.departureLocation.name}}
+                    </span>
+                    <br />
+                    <span style="font-size: 14px; color: #7e7e8c;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Departure Location
+                    </span>
+                </div>
+            </div>
+            <div style="font-size: 16px;color: #4a4a4a; font-weight: 700;">{{busdeparturetime}}:00</div>
+        </div>
+        <div class="mainContainer23">
+            <div>
+                <div>
+                    <span style="font-size: 16px; color: #3e3e52;">
+                        <mat-icon>flight_land</mat-icon>&nbsp;&nbsp;{{routedetails.arrivalLocation.name}}
+                    </span>
+                    <br />
+                    <span style="font-size: 14px; color: #7e7e8c;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Arrival Location
+                    </span>
+                </div>
+            </div>
+            <div style="font-size: 16px;color: #4a4a4a; font-weight: 700;">{{busarrivaltime}}:00</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="mainContainer24">
+            <div>Seat No.</div>
+            <div>{{selectedseats.join(',')}}</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="mainContainer25">Fare Details</div>
+        <div class="mainContainer26">
+            <div>
+                <span style="font-size: 16px; color: #3e3e52;">Amount</span>
+                <br />
+                <span style="font-size: 10px; color: #838083; margin-top: 5px;"> Taxes will be calculated during
+                    Payment</span>
+            </div>
+            <div>{{selectedseats.length * seatprice}}</div>
+        </div>
+        <div class="mainContainer27">
+            <app-form-drawer [selectedseat]="selectedseats" [seatprice]="seatprice" [routedetails]="routedetails"
+                [busid]="busid" [busarrivaltime]="busarrivaltime" [busdeparturetime]="busdeparturetime" [operatorname]="operatorname">
+
+            </app-form-drawer>
+        </div>
+    </div>
+</div>

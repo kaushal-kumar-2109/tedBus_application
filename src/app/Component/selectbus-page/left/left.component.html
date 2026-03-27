@@ -1,0 +1,59 @@
+<!-- left.component.html -->
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden sticky top-24">
+    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="font-black text-gray-800 tracking-tight text-sm uppercase">Filters</h2>
+        <button class="text-red-500 text-xs font-bold hover:underline">Clear All</button>
+    </div>
+
+    <!-- Quick Filters -->
+    <div class="p-6 border-b border-gray-100">
+        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Quick Filters</h3>
+        <div class="space-y-3">
+            <label class="flex items-center group cursor-pointer" (click)="handlelivetrackingclick()">
+                <div class="w-5 h-5 rounded border-2 border-gray-200 group-hover:border-red-500 flex items-center justify-center transition-all" [class.bg-red-500]="sidefiltervalues.livetracking" [class.border-red-500]="sidefiltervalues.livetracking">
+                    <i class="fa-solid fa-check text-white text-[10px]" *ngIf="sidefiltervalues.livetracking"></i>
+                </div>
+                <span class="ml-3 text-sm font-medium text-gray-600 group-hover:text-red-600 transition-colors">Live Tracking</span>
+                <i class="fa-solid fa-location-dot ml-auto text-gray-300 group-hover:text-red-400"></i>
+            </label>
+
+            <label class="flex items-center group cursor-pointer" (click)="handlerescheduleclick()">
+                <div class="w-5 h-5 rounded border-2 border-gray-200 group-hover:border-red-500 flex items-center justify-center transition-all" [class.bg-red-500]="sidefiltervalues.reschedulable" [class.border-red-500]="sidefiltervalues.reschedulable">
+                    <i class="fa-solid fa-check text-white text-[10px]" *ngIf="sidefiltervalues.reschedulable"></i>
+                </div>
+                <span class="ml-3 text-sm font-medium text-gray-600 group-hover:text-red-600 transition-colors">Reschedulable</span>
+                <i class="fa-solid fa-rotate-left ml-auto text-gray-300 group-hover:text-red-400"></i>
+            </label>
+        </div>
+    </div>
+
+    <!-- Departure Time -->
+    <div class="p-6 border-b border-gray-100">
+        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Departure Time</h3>
+        <div class="grid grid-cols-2 gap-2">
+            <button *ngFor="let key of getobjectkey(sidefiltervalues.departuretime)" 
+                (click)="handledeparturetimeclick({target: {checked: !sidefiltervalues.departuretime[key]}}, key)"
+                class="flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all duration-300 group"
+                [class.border-red-500]="sidefiltervalues.departuretime[key]"
+                [class.bg-red-50]="sidefiltervalues.departuretime[key]"
+                [class.border-gray-50]="!sidefiltervalues.departuretime[key]"
+                [class.hover:border-red-100]="!sidefiltervalues.departuretime[key]">
+                <i class="fa-regular fa-sun mb-1" [class.text-red-500]="sidefiltervalues.departuretime[key]" [class.text-gray-400]="!sidefiltervalues.departuretime[key]"></i>
+                <span class="text-[10px] font-bold" [class.text-red-700]="sidefiltervalues.departuretime[key]" [class.text-gray-500]="!sidefiltervalues.departuretime[key]">{{key}}</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bus Types -->
+    <div class="p-6">
+        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-4">Bus Types</h3>
+        <div class="space-y-3">
+            <label *ngFor="let key of getobjectkey(sidefiltervalues.bustype)" class="flex items-center group cursor-pointer" (click)="handlebustypeclick({target: {checked: !sidefiltervalues.bustype[key]}}, key)">
+                <div class="w-5 h-5 rounded border-2 border-gray-200 group-hover:border-red-500 flex items-center justify-center transition-all" [class.bg-red-500]="sidefiltervalues.bustype[key]" [class.border-red-500]="sidefiltervalues.bustype[key]">
+                    <i class="fa-solid fa-check text-white text-[10px]" *ngIf="sidefiltervalues.bustype[key]"></i>
+                </div>
+                <span class="ml-3 text-sm font-medium text-gray-600 group-hover:text-red-600 transition-colors">{{key}}</span>
+            </label>
+        </div>
+    </div>
+</div>

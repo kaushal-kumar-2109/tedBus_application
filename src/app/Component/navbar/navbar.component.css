@@ -1,0 +1,85 @@
+/* navbar.component.css */
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+:host-context(.dark) .glass-nav {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-bottom: 1px solid #1a1a1a !important;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  color: #4b5563; /* gray-600 */
+}
+
+.nav-item:hover {
+  background-color: #fef2f2; /* red-50 */
+  color: #ef4444; /* red-500 */
+}
+
+:host-context(.dark) .nav-item:hover {
+  background-color: rgba(239, 68, 68, 0.1) !important;
+  color: #ff4d4d !important;
+}
+
+.active-nav {
+  background-color: #fef2f2;
+  color: #ef4444 !important;
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.1), 0 2px 4px -1px rgba(239, 68, 68, 0.06);
+}
+
+:host-context(.dark) .active-nav {
+  background-color: rgba(239, 68, 68, 0.2) !important;
+  color: #ff4d4d !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5) !important;
+}
+
+.modern-menu {
+  border-radius: 1rem !important;
+  margin-top: 0.5rem !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid #f3f4f6 !important;
+}
+
+:host-context(.dark) .modern-menu {
+  background-color: #0a0a0a !important;
+  border: 1px solid #1a1a1a !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.8) !important;
+}
+
+mat-menu-item {
+  font-weight: 500 !important;
+  color: #374151 !important;
+}
+
+:host-context(.dark) mat-menu-item {
+  color: #ffffff !important;
+}
+
+mat-menu-item:hover {
+  background-color: #f9fafb !important;
+}
+
+:host-context(.dark) mat-menu-item:hover {
+  background-color: #1a1a1a !important;
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.mobile-menu-open {
+  animation: slideInRight 0.3s ease-out forwards;
+}

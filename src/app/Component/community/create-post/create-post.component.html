@@ -1,0 +1,81 @@
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4" (click)="close()">
+  <div class="bg-white dark:bg-[#1f1f1f] rounded-3xl w-full max-w-2xl shadow-2xl flex flex-col transform transition-all" (click)="$event.stopPropagation()">
+    
+    <!-- Modal Header -->
+    <div class="px-6 py-4 border-b border-gray-100 dark:border-stone-800 flex justify-between items-center bg-gray-50/50 dark:bg-stone-900/50 rounded-t-3xl">
+      <h2 class="text-xl font-black text-gray-800 dark:text-white uppercase tracking-tight">Share Your Journey</h2>
+      <button (click)="close()" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-stone-800 transition-colors text-gray-500 hover:text-red-500">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="p-6 flex flex-col gap-4 overflow-y-auto max-h-[75vh]">
+      
+      <!-- Title Input -->
+      <div class="flex flex-col gap-1">
+        <label class="text-xs font-bold uppercase text-gray-400 tracking-wider">Story Title *</label>
+        <input 
+          [(ngModel)]="title" 
+          placeholder="e.g. A Scenic Bus Ride from Delhi to Manali" 
+          class="w-full bg-white dark:bg-[#121212] border-2 border-gray-100 dark:border-stone-800 rounded-xl px-4 py-3 text-gray-800 dark:text-gray-200 font-bold focus:border-red-500 focus:outline-none transition-colors"
+        >
+      </div>
+
+      <!-- Content Textarea -->
+      <div class="flex flex-col gap-1">
+        <label class="text-xs font-bold uppercase text-gray-400 tracking-wider">Your Story *</label>
+        <textarea 
+          [(ngModel)]="content" 
+          rows="6"
+          placeholder="What made this trip special? Any tips for fellow travelers?" 
+          class="w-full bg-white dark:bg-[#121212] border-2 border-gray-100 dark:border-stone-800 rounded-xl px-4 py-3 text-gray-700 dark:text-gray-300 focus:border-red-500 focus:outline-none transition-colors resize-none"
+        ></textarea>
+      </div>
+
+      <!-- Image URL (Optional) -->
+      <div class="flex flex-col gap-1">
+        <label class="text-xs font-bold uppercase text-gray-400 tracking-wider">Image URL (Optional)</label>
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-link absolute left-4 text-gray-400"></i>
+          <input 
+            [(ngModel)]="imageUrl" 
+            placeholder="https://example.com/photo.jpg" 
+            class="w-full bg-white dark:bg-[#121212] border-2 border-gray-100 dark:border-stone-800 rounded-xl pl-10 pr-4 py-3 text-gray-700 dark:text-gray-300 focus:border-red-500 focus:outline-none transition-colors text-sm"
+          >
+        </div>
+      </div>
+
+      <!-- Tags (Optional) -->
+      <div class="flex flex-col gap-1">
+        <label class="text-xs font-bold uppercase text-gray-400 tracking-wider">Tags (comma separated)</label>
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-hashtag absolute left-4 text-gray-400"></i>
+          <input 
+            [(ngModel)]="tagsStr" 
+            placeholder="e.g. Manali, Mountains, AC Bus" 
+            class="w-full bg-white dark:bg-[#121212] border-2 border-gray-100 dark:border-stone-800 rounded-xl pl-10 pr-4 py-3 text-gray-700 dark:text-gray-300 focus:border-red-500 focus:outline-none transition-colors text-sm"
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="px-6 py-4 border-t border-gray-100 dark:border-stone-800 flex justify-end gap-3 rounded-b-3xl">
+      <button 
+        (click)="close()" 
+        class="px-5 py-2 rounded-full font-bold text-gray-500 hover:bg-gray-100 dark:hover:bg-stone-800 transition-colors">
+        Cancel
+      </button>
+      <button 
+        (click)="submitPost()"
+        [disabled]="!title || !content || isSubmitting"
+        class="px-6 py-2 rounded-full font-bold text-white transition-all shadow-md flex items-center gap-2"
+        [ngClass]="title && content && !isSubmitting ? 'bg-red-600 hover:bg-red-700 cursor-pointer shadow-red-200 dark:shadow-red-900/20' : 'bg-red-400 cursor-not-allowed'">
+        <i *ngIf="isSubmitting" class="fa-solid fa-spinner fa-spin"></i>
+        {{ isSubmitting ? 'Posting...' : 'Post Story' }}
+      </button>
+    </div>
+
+  </div>
+</div>

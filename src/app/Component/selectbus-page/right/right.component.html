@@ -1,0 +1,25 @@
+<div class="p-4">
+    <app-sorting-bar></app-sorting-bar>
+
+    <div *ngIf="matchedbus.length === 0" class="text-center py-20">
+        <div class="w-20 h-20 rounded-full bg-gray-100 dark:bg-stone-800 flex items-center justify-center mx-auto mb-4">
+            <i class="fa-solid fa-bus-slash text-gray-400 text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-black text-gray-700 dark:text-gray-300">No buses found</h3>
+        <p class="text-gray-400 text-sm mt-2">Try a different route or date.</p>
+    </div>
+
+    <div *ngFor="let bus of matchedbus">
+        <app-bus-box
+            [rating]="bus.rating"
+            [busid]="bus._id"
+            [operatorname]="bus.operatorName"
+            [bustype]="bus.busType"
+            [departuretime]="bus.departureTime"
+            [livetracking]="bus.liveTracking"
+            [reschedulable]="bus.reschedulable"
+            [filledseats]="seats[bus._id] || []"
+            [routedetails]="routes">
+        </app-bus-box>
+    </div>
+</div>

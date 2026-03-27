@@ -1,0 +1,229 @@
+<!-- navbar.component.html -->
+<nav
+  class="sticky top-0 z-50 w-full glass-nav shadow-sm border-b border-gray-100 dark:bg-[#121212] dark:border-stone-800 transition-colors px-4 md:px-10 py-2">
+  <div class="max-w-[1400px] mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center gap-8">
+      <div class="cursor-pointer" (click)="navigate('/')">
+        <img class="h-10 md:h-12 w-auto object-contain" src="../../../assets/red-bus-with-word-bus-it_600323-482.avif"
+          alt="Tedbus Logo">
+      </div>
+
+      <!-- Desktop Services -->
+      <div class="hidden lg:flex items-center gap-6">
+        <a class="nav-item group" [routerLink]="['/']" routerLinkActive="active-nav">
+          <i class="fa-solid fa-bus-simple text-xl mb-1 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">{{ 'NAVBAR.BUS_TICKETS' | translate }}</span>
+        </a>
+        <a class="nav-item group text-gray-500 hover:text-red-500">
+          <i class="fa-solid fa-car-side text-xl mb-1 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">{{ 'NAVBAR.CAB_RENTAL' | translate }}</span>
+        </a>
+        <a class="nav-item group text-gray-500 hover:text-red-500">
+          <i class="fa-solid fa-train text-xl mb-1 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">{{ 'NAVBAR.TRAIN_TICKETS' | translate }}</span>
+        </a>
+        <a class="nav-item group text-gray-500 hover:text-red-500" [routerLink]="['/community']" routerLinkActive="active-nav">
+          <i class="fa-solid fa-users text-xl mb-1 group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs font-semibold uppercase tracking-wider">Community</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Side (Auth/Profile) -->
+    <div class="flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-2 mr-4">
+        <a
+          class="flex items-center gap-1 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-stone-800 transition-colors cursor-pointer text-gray-700 dark:text-gray-300">
+          <i class="fa-solid fa-headset text-gray-600 dark:text-gray-400"></i>
+          <span class="text-sm font-medium">{{ 'NAVBAR.HELP' | translate }}</span>
+        </a>
+      </div>
+
+      <!-- Auth Buttons -->
+      <div class="hidden md:flex items-center gap-3" *ngIf="!isloggedIn">
+        <button
+          class="text-sm font-bold text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors px-3 py-2"
+          (click)="navigate('/login')">{{ 'NAVBAR.LOGIN' | translate }}</button>
+        <button
+          class="text-sm font-bold bg-red-600 text-white px-5 py-2 rounded-full hover:bg-red-700 transition-all shadow-md hover:shadow-red-200"
+          (click)="navigate('/signup')">{{ 'NAVBAR.SIGNUP' | translate }}</button>
+      </div>
+
+      <div id="google-btn" *ngIf="!isloggedIn"></div>
+
+      <!-- Language Switcher -->
+      <div class="flex items-center gap-2">
+        <button [matMenuTriggerFor]="langMenu"
+          class="flex items-center justify-center w-auto px-2 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-stone-800 transition-all text-sm font-bold text-gray-600 dark:text-gray-300">
+          {{ currentLang | uppercase }} <i class="fa-solid fa-angle-down ml-1 text-[10px]"></i>
+        </button>
+        <mat-menu #langMenu="matMenu" class="modern-menu">
+          <button mat-menu-item (click)="switchLang('en')">English (EN)</button>
+          <button mat-menu-item (click)="switchLang('hi')">हिंदी (HI)</button>
+        </mat-menu>
+      </div>
+
+      <!-- Theme Toggle (Desktop) -->
+      <button (click)="toggleTheme()"
+        class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 dark:hover:bg-stone-800 transition-all text-gray-500 dark:text-gray-400 hover:text-red-600">
+        <i class="fa-solid" [ngClass]="currentTheme === 'light' ? 'fa-moon' : 'fa-sun'"></i>
+      </button>
+
+      <div class="flex items-center gap-2" *ngIf="isloggedIn">
+        <button [matMenuTriggerFor]="menu"
+          class="flex items-center gap-2 p-1.5 rounded-full hover:bg-gray-100 dark:hover:bg-stone-800 transition-all border border-transparent hover:border-gray-200 dark:hover:border-stone-700">
+          <div class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+            <i class="fa-regular fa-user text-red-600 dark:text-red-500"></i>
+          </div>
+          <span class="hidden md:inline text-sm font-semibold text-gray-700 dark:text-gray-300">{{ 'NAVBAR.ACCOUNT' | translate }}</span>
+          <i class="fa-solid fa-angle-down text-gray-400 dark:text-gray-500 text-[10px]"></i>
+        </button>
+        <mat-menu #menu="matMenu" class="modern-menu">
+          <button mat-menu-item><i class="fa-solid fa-ticket mr-3 text-gray-400"></i> {{ 'NAVBAR.MY_TRIPS' | translate }}</button>
+          <button mat-menu-item><i class="fa-solid fa-wallet mr-3 text-gray-400"></i> {{ 'NAVBAR.WALLET' | translate }}</button>
+          <button mat-menu-item (click)="navigate('/profile')"><i class="fa-solid fa-user mr-3 text-gray-400"></i>
+            {{ 'NAVBAR.PROFILE' | translate }}</button>
+          <hr class="my-1 border-gray-100">
+          <button mat-menu-item (click)="handlelogout()" class="text-red-600 font-bold"><i
+              class="fa-solid fa-sign-out-alt mr-3"></i> {{ 'NAVBAR.SIGN_OUT' | translate }}</button>
+        </mat-menu>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" (click)="toggleMenu()">
+        <i class="fa-solid fa-bars text-xl text-gray-700"></i>
+      </button>
+    </div>
+  </div>
+
+</nav>
+
+<!-- Mobile Sidebar Overlay (Outside nav for better stacking) -->
+<div class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9990] transition-opacity duration-300"
+  [class.opacity-0]="!isMenuOpen" [class.pointer-events-none]="!isMenuOpen" (click)="toggleMenu()"></div>
+
+<!-- Mobile Sidebar (High Z-Index & Solid White) -->
+<div
+  class="fixed top-0 right-0 w-[85%] max-w-[320px] h-screen bg-white dark:bg-[#1f1f1f] z-[9999] transition-transform duration-500 ease-in-out transform shadow-2xl flex flex-col"
+  [class.translate-x-full]="!isMenuOpen" [class.translate-x-0]="isMenuOpen">
+
+  <!-- Sidebar Header -->
+  <div
+    class="p-6 border-b border-gray-100 dark:border-stone-800 flex items-center justify-between bg-white dark:bg-[#1f1f1f]">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-lg shadow-red-200">
+        <i class="fa-solid fa-bus text-white"></i>
+      </div>
+      <span class="text-lg font-black text-gray-800 dark:text-white tracking-tighter uppercase">Menu</span>
+    </div>
+    <button (click)="toggleMenu()" class="p-2 hover:bg-gray-50 dark:hover:bg-stone-800 rounded-full transition-colors">
+      <i class="fa-solid fa-xmark text-2xl text-gray-400 dark:text-gray-500 hover:text-red-500 transition-colors"></i>
+    </button>
+  </div>
+
+  <!-- Sidebar Content -->
+  <div class="flex-1 overflow-y-auto p-6 bg-white">
+    <!-- Auth Section in Mobile Menu -->
+    <div class="flex flex-col gap-3 mb-8" *ngIf="!isloggedIn">
+      <button
+        class="w-full py-3 px-4 rounded-xl border-2 border-gray-100 dark:border-stone-800 font-bold text-gray-700 dark:text-gray-300 hover:border-red-500 hover:text-red-600 transition-all text-left flex items-center justify-between group"
+        (click)="navigate('/login'); toggleMenu()">
+        Login <i class="fa-solid fa-arrow-right text-[10px] opacity-0 group-hover:opacity-100 transition-all"></i>
+      </button>
+      <button
+        class="w-full py-4 px-4 rounded-xl bg-red-600 font-black text-white shadow-lg shadow-red-200 hover:bg-red-700 transition-all text-center uppercase tracking-widest text-sm"
+        (click)="navigate('/signup'); toggleMenu()">
+        Join Tedbus
+      </button>
+    </div>
+
+    <!-- Logged in Profile Section in Mobile Menu -->
+    <div class="mb-8" *ngIf="isloggedIn">
+      <div
+        class="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 dark:bg-stone-800/50 border border-gray-100 dark:border-stone-800">
+        <div class="w-12 h-12 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center">
+          <i class="fa-regular fa-user text-red-600 dark:text-red-500 text-xl"></i>
+        </div>
+        <div>
+          <p class="text-xs font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest">Signed in as</p>
+          <p class="font-bold text-gray-700 dark:text-gray-200">Account</p>
+        </div>
+      </div>
+      <div class="mt-4 flex flex-col gap-2">
+        <button mat-menu-item (click)="navigate('/profile'); toggleMenu()"
+          class="text-sm font-semibold text-gray-700 dark:text-gray-300 hover:dark:bg-stone-800"><i
+            class="fa-solid fa-user mr-3 text-gray-400 dark:text-gray-500"></i> My Profile</button>
+        <button mat-menu-item (click)="handlelogout()" class="text-sm font-bold text-red-600 hover:dark:bg-stone-800"><i
+            class="fa-solid fa-sign-out-alt mr-3"></i> Sign Out</button>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-2">Services</p>
+      <a class="flex items-center gap-4 p-4 rounded-2xl hover:bg-red-50 text-gray-700 hover:text-red-600 transition-all group"
+        (click)="navigate('/'); toggleMenu()">
+        <div
+          class="w-8 h-8 rounded-lg bg-gray-50 group-hover:bg-red-100 flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-bus-simple text-sm"></i>
+        </div>
+        <span class="font-bold">Bus Tickets</span>
+      </a>
+      <a class="flex items-center gap-4 p-4 rounded-2xl hover:bg-red-50 text-gray-700 hover:text-red-600 transition-all group"
+        (click)="toggleMenu()">
+        <div
+          class="w-8 h-8 rounded-lg bg-gray-50 group-hover:bg-red-100 flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-car-side text-sm"></i>
+        </div>
+        <span class="font-bold">Cab Rental</span>
+      </a>
+      <a class="flex items-center gap-4 p-4 rounded-2xl hover:bg-red-50 text-gray-700 hover:text-red-600 transition-all group"
+        (click)="toggleMenu()">
+        <div
+          class="w-8 h-8 rounded-lg bg-gray-50 group-hover:bg-red-100 flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-train text-sm"></i>
+        </div>
+        <span class="font-bold">Train Tickets</span>
+      </a>
+
+      <div class="my-4 border-t border-gray-100"></div>
+
+      <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2 px-2">Support & Settings</p>
+
+      <a class="flex items-center gap-4 p-4 rounded-2xl hover:bg-gray-50 text-gray-700 transition-all group"
+        (click)="toggleMenu()">
+        <div
+          class="w-8 h-8 rounded-lg bg-gray-50 group-hover:bg-white flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-headset text-sm"></i>
+        </div>
+        <span class="font-bold">Help & Support</span>
+      </a>
+
+      <div
+        class="flex items-center gap-4 p-4 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-900/20 text-gray-700 dark:text-gray-300 hover:text-blue-600 transition-all group cursor-pointer"
+        (click)="toggleTheme(); toggleMenu()">
+        <div
+          class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-blue-900/30 group-hover:bg-blue-100 dark:group-hover:bg-blue-800 flex items-center justify-center transition-colors text-blue-600 dark:text-blue-400">
+          <i class="fa-solid" [ngClass]="currentTheme === 'light' ? 'fa-moon' : 'fa-sun'"></i>
+        </div>
+        <span class="font-bold">Switch to {{ currentTheme === 'light' ? 'Dark' : 'Light' }} Mode</span>
+      </div>
+
+      <div
+        class="flex items-center gap-4 p-4 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/20 text-gray-700 dark:text-gray-300 hover:text-red-600 transition-all group cursor-pointer"
+        *ngIf="!isloggedIn" (click)="navigate('/login'); toggleMenu()">
+        <div
+          class="w-8 h-8 rounded-lg bg-red-50 dark:bg-red-900/30 group-hover:bg-red-100 dark:group-hover:bg-red-800 flex items-center justify-center transition-colors text-red-600 dark:text-red-400">
+          <i class="fa-solid fa-right-to-bracket text-sm"></i>
+        </div>
+        <span class="font-bold">Login</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Footer -->
+  <div class="p-6 bg-gray-50/50 dark:bg-stone-900/50 border-t border-gray-100 dark:border-stone-800">
+    <p class="text-[10px] text-gray-400 dark:text-stone-500 font-medium text-center">&copy; 2026 Tedbus Clone. All
+      Rights Reserved.</p>
+  </div>
+</div>

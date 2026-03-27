@@ -1,0 +1,132 @@
+.mainContainer {
+    width: 100%;
+    min-height: 350px;
+    height: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #eeeded;
+  }
+  
+  /* container 1.....bus seats */
+  .mainContainer1 {
+    width: 560px;
+    height: 200px;
+    display: flex;
+    margin-right: 40px;
+    margin-left: 40px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+  }
+  
+  .mainContainer1Left {
+    width: 10%;
+    height: 100%;
+    border-left: 4px solid black;
+    display: flex;
+    justify-content: center;
+    padding-top: 17px;
+  }
+  
+  .mainContainer1Right {
+    width: 90%;
+    height: 90%;
+    border-left: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 20px;
+  }
+  
+  .mainContainer1Right > div {
+    width: 100%;
+    height: 17%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+ 
+  
+  .mainContainer2 {
+    width: 470px;
+    height: 400px;
+    padding: 20px 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: rgb(248, 248, 248);
+  }
+  
+  .mainContainer2 > div {
+    width: 100%;
+  }
+  
+  .mainContainer21 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #3e3e52;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .mainContainer21 > div:nth-child(2) {
+    font-size: 14px;
+    font-weight: 700;
+    color: #5279d0;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .mainContainer22,
+  .mainContainer23 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .mainContainer22 > div,
+  .mainContainer23 > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mainContainer24 {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mainContainer24 > div {
+    font-size: 14px;
+    color: #4a4a4a;
+    font-weight: 700;
+  }
+  
+  .mainContainer24 > div:nth-child(1) {
+    font-size: 16px;
+  }
+  
+  .mainContainer25 {
+    margin-top: 13px;
+    font-size: 16px;
+    color: #4a4a4a;
+    font-weight: 700;
+  }
+  
+  .mainContainer26 {
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .mainContainer26 > div:nth-child(2) {
+    font-weight: 700;
+    font-size: 14px;
+    text-align: right;
+    color: #3e3e52;
+  }

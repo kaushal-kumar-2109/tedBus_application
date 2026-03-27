@@ -1,0 +1,243 @@
+<section class="hero-section min-h-[450px] md:h-[32rem] flex flex-col items-center justify-center px-4 relative">
+    <div class="hero-overlay"></div>
+
+    <div class="relative z-10 w-full max-w-[1200px] flex flex-col items-center">
+        <h1
+            class="text-3xl md:text-5xl lg:text-6xl text-white font-black mb-12 text-center drop-shadow-md tracking-tight leading-tight">
+            {{ 'LANDING.HERO_TITLE' | translate }} <br class="hidden md:block"> {{ 'LANDING.HERO_SUBTITLE' | translate }}
+        </h1>
+
+        <!-- Modern Search Container -->
+        <div class="w-full lg:w-[95%] search-container flex flex-col lg:flex-row items-stretch p-2 lg:p-0">
+            <!-- From Input -->
+            <div class="search-input-group flex-1" [matMenuTriggerFor]="menu">
+                <i class="fa-solid fa-bus-simple search-icon"></i>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">{{ 'LANDING.FROM' | translate }}</span>
+                    <input class="search-input" type="text" [placeholder]="'LANDING.START_CITY' | translate" [(ngModel)]="fromoption">
+                </div>
+                <mat-menu #menu="matMenu" class="modern-menu">
+                    <button mat-menu-item (click)="fromEvent('Mumbai')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Mumbai</button>
+                    <button mat-menu-item (click)="fromEvent('Delhi')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Delhi</button>
+                    <button mat-menu-item (click)="fromEvent('Bangalore')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Bangalore</button>
+                    <button mat-menu-item (click)="fromEvent('Hyderabad')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Hyderabad</button>
+                    <button mat-menu-item (click)="fromEvent('Jaipur')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Jaipur</button>
+                    <button mat-menu-item (click)="fromEvent('Pune')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Pune</button>
+                </mat-menu>
+            </div>
+
+            <!-- Swap Icon (Hidden on mobile or centered) -->
+            <div class="hidden lg:flex items-center justify-center p-2">
+                <div
+                    class="w-10 h-10 rounded-full bg-white border border-gray-100 shadow-md flex items-center justify-center cursor-pointer hover:rotate-180 transition-transform duration-500 z-20 -mx-5 bg-white">
+                    <i class="fa-solid fa-right-left text-red-500"></i>
+                </div>
+            </div>
+
+            <!-- To Input -->
+            <div class="search-input-group flex-1" [matMenuTriggerFor]="menu2">
+                <i class="fa-solid fa-location-arrow search-icon"></i>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">{{ 'LANDING.TO' | translate }}</span>
+                    <input class="search-input" type="text" [placeholder]="'LANDING.DESTINATION' | translate" [(ngModel)]="tooption">
+                </div>
+                <mat-menu #menu2="matMenu" class="modern-menu">
+                    <button mat-menu-item (click)="toEvent('Pune')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Pune</button>
+                    <button mat-menu-item (click)="toEvent('Agra')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Agra</button>
+                    <button mat-menu-item (click)="toEvent('Chennai')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Chennai</button>
+                    <button mat-menu-item (click)="toEvent('Vijayawada')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Vijayawada</button>
+                    <button mat-menu-item (click)="toEvent('Delhi')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Delhi</button>
+                    <button mat-menu-item (click)="toEvent('Mumbai')"><i class="fa-solid fa-location-dot mr-2 text-gray-400"></i> Mumbai</button>
+                </mat-menu>
+            </div>
+
+            <!-- Date Picker -->
+            <div class="search-input-group flex-1 relative group" (click)="picker.open()">
+                <i class="fa-solid fa-calendar-days search-icon"></i>
+                <div class="flex flex-col flex-1">
+                    <span class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">{{ 'LANDING.DATE' | translate }}</span>
+                    <input class="search-input pointer-events-none" [value]="date || ('LANDING.SELECT_DATE' | translate)" readonly>
+                </div>
+                <!-- Hidden Material Datepicker Input -->
+                <input matInput [matDatepicker]="picker" class="absolute inset-0 opacity-0 cursor-pointer"
+                    (dateChange)="matchDate($event)">
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+
+            <!-- Search Button -->
+            <button class="search-btn lg:m-2" (click)="submit()">
+                {{ 'LANDING.SEARCH_BUSES' | translate }}
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------- hero section ends here ---------------------------  -->
+
+
+
+
+
+<!-- ------------------------------- offers section starts here -------------------- -->
+<section class="flex flex-col items-center py-16 bg-gray-50/50 dark:bg-black">
+    <div class="w-full max-w-[1200px] px-4">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h2 class="text-3xl font-black text-gray-800 tracking-tight">{{ 'LANDING.TRENDING_OFFERS' | translate }}</h2>
+                <p class="text-gray-500 mt-1">{{ 'LANDING.HANDPICKED_DEALS' | translate }}</p>
+            </div>
+            <button
+                class="px-6 py-2 rounded-full border-2 border-red-100 text-red-600 font-bold hover:bg-red-600 hover:text-white transition-all duration-300 shadow-sm hover:shadow-red-200">
+                {{ 'LANDING.VIEW_ALL' | translate }}
+            </button>
+        </div>
+
+        <div class="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x">
+            <!-- Offer Card 1 -->
+            <div
+                class="offer-card flex-shrink-0 w-[320px] h-[180px] rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-500 p-6 flex flex-col justify-between text-white snap-start shadow-xl">
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                        <i class="fa-solid fa-bus text-xl"></i>
+                    </div>
+                    <span
+                        class="px-3 py-1 rounded-full bg-white/20 text-[10px] font-bold tracking-widest uppercase">Promo</span>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-1">Save up to ₹250</h3>
+                    <p class="text-xs text-blue-100 truncate">On all domestic bus bookings</p>
+                </div>
+                <div class="flex items-center justify-between mt-2 pt-4 border-t border-white/10">
+                    <div
+                        class="px-3 py-1 rounded-md bg-white/10 border border-white/20 border-dashed text-sm font-mono font-bold">
+                        FIRST</div>
+                    <button class="hover:scale-110 transition-transform"><i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+
+            <!-- Offer Card 2 -->
+            <div
+                class="offer-card flex-shrink-0 w-[320px] h-[180px] rounded-2xl bg-gradient-to-br from-rose-600 to-red-500 p-6 flex flex-col justify-between text-white snap-start shadow-xl">
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <span
+                        class="px-3 py-1 rounded-full bg-white/20 text-[10px] font-bold tracking-widest uppercase">Hot</span>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-1">Superhit Deals</h3>
+                    <p class="text-xs text-red-100 truncate">Save up to ₹300 on AP/TS routes</p>
+                </div>
+                <div class="flex items-center justify-between mt-2 pt-4 border-t border-white/10">
+                    <div
+                        class="px-3 py-1 rounded-md bg-white/10 border border-white/20 border-dashed text-sm font-mono font-bold">
+                        SUPERHIT</div>
+                    <button class="hover:scale-110 transition-transform"><i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+
+            <!-- Offer Card 3 -->
+            <div
+                class="offer-card flex-shrink-0 w-[320px] h-[180px] rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-500 p-6 flex flex-col justify-between text-white snap-start shadow-xl">
+                <div class="flex justify-between items-start">
+                    <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+                        <i class="fa-solid fa-gift text-xl"></i>
+                    </div>
+                    <span
+                        class="px-3 py-1 rounded-full bg-white/20 text-[10px] font-bold tracking-widest uppercase">Gift</span>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-1">State Special</h3>
+                    <p class="text-xs text-emerald-100 truncate">Save up to ₹300 on MP/RJ routes</p>
+                </div>
+                <div class="flex items-center justify-between mt-2 pt-4 border-t border-white/10">
+                    <div
+                        class="px-3 py-1 rounded-md bg-white/10 border border-white/20 border-dashed text-sm font-mono font-bold">
+                        BUS300</div>
+                    <button class="hover:scale-110 transition-transform"><i class="fa-regular fa-copy"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- -------------------------- FAQ section ---------------------------  -->
+<section class="flex justify-center py-20 bg-white dark:bg-black transition-colors">
+    <div class="w-full max-w-[900px] px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-black text-gray-800 mb-4">FREQUENTLY ASKED QUESTIONS</h2>
+            <div class="w-20 h-1.5 bg-red-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="faq-card group">
+                <div
+                    class="flex items-center justify-between p-6 cursor-pointer bg-gray-50 dark:bg-stone-900 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/10 transition-all duration-300 border border-transparent hover:border-red-100 dark:hover:border-red-900/30">
+                    <h3
+                        class="text-lg font-bold text-gray-700 dark:text-gray-200 group-hover:text-red-700 dark:group-hover:text-red-500">
+                        Can I track the location of my booked bus online?</h3>
+                    <div
+                        class="w-8 h-8 rounded-full bg-white dark:bg-stone-800 shadow-sm flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:text-red-500 group-hover:rotate-180 transition-all duration-500">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div
+                    class="faq-content overflow-hidden max-h-0 group-hover:max-h-[300px] transition-all duration-500 ease-in-out">
+                    <div
+                        class="p-6 text-gray-600 dark:text-gray-400 leading-relaxed border-x border-b border-gray-50 dark:border-stone-900 rounded-b-2xl -mt-2 bg-white dark:bg-stone-900">
+                        Yes, you can track your <strong>bus online</strong> using our <a
+                            class="text-red-500 font-bold hover:underline cursor-pointer">Track My Bus</a> feature. This
+                        allows passengers and families to track live bus locations on a map for better trip planning and
+                        safety.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-card group">
+                <div
+                    class="flex items-center justify-between p-6 cursor-pointer bg-gray-50 dark:bg-stone-900 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/10 transition-all duration-300 border border-transparent hover:border-red-100 dark:hover:border-red-900/30">
+                    <h3
+                        class="text-lg font-bold text-gray-700 dark:text-gray-200 group-hover:text-red-700 dark:group-hover:text-red-500">
+                        Why book bus tickets online on Tedbus?</h3>
+                    <div
+                        class="w-8 h-8 rounded-full bg-white dark:bg-stone-800 shadow-sm flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:text-red-500 group-hover:rotate-180 transition-all duration-500">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div
+                    class="faq-content overflow-hidden max-h-0 group-hover:max-h-[300px] transition-all duration-500 ease-in-out">
+                    <div
+                        class="p-6 text-gray-600 dark:text-gray-400 leading-relaxed border-x border-b border-gray-50 dark:border-stone-900 rounded-b-2xl -mt-2 bg-white dark:bg-stone-900">
+                        Online booking on Tedbus offers convenience, live seat selection, multiple payment options, and
+                        exclusive discounts not available at brick-and-mortar counters.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-card group">
+                <div
+                    class="flex items-center justify-between p-6 cursor-pointer bg-gray-50 dark:bg-stone-900 rounded-2xl hover:bg-red-50 dark:hover:bg-red-900/10 transition-all duration-300 border border-transparent hover:border-red-100 dark:hover:border-red-900/30">
+                    <h3
+                        class="text-lg font-bold text-gray-700 dark:text-gray-200 group-hover:text-red-700 dark:group-hover:text-red-500">
+                        Does bus booking online cost me more?</h3>
+                    <div
+                        class="w-8 h-8 rounded-full bg-white dark:bg-stone-800 shadow-sm flex items-center justify-center text-gray-400 dark:text-gray-500 group-hover:text-red-500 group-hover:rotate-180 transition-all duration-500">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                </div>
+                <div
+                    class="faq-content overflow-hidden max-h-0 group-hover:max-h-[300px] transition-all duration-500 ease-in-out">
+                    <div
+                        class="p-6 text-gray-600 dark:text-gray-400 leading-relaxed border-x border-b border-gray-50 dark:border-stone-900 rounded-b-2xl -mt-2 bg-white dark:bg-stone-900">
+                        No, in fact, online booking is often cheaper due to exclusive promo codes and bank offers. There
+                        are no hidden charges when booking through our platform.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

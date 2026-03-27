@@ -1,0 +1,4 @@
+/* bus-box.component.css */
+:host {
+    display: block;
+}

@@ -1,0 +1,17 @@
+<!-- selectbus-page.component.html -->
+<div class="bg-gray-50 min-h-screen">
+    <app-navbar></app-navbar>
+    <app-header></app-header>
+    
+    <div class="max-w-[1400px] mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filters -->
+        <aside class="w-full lg:w-72 flex-shrink-0">
+            <app-left></app-left>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex-1">
+            <app-right></app-right>
+        </main>
+    </div>
+</div>
